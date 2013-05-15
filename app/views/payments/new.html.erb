@@ -1,0 +1,12 @@
+<% provide(:title, 'About') %>
+    <div class="container-narrow">
+        <%= render :partial => 'layouts/header', :locals => { :active => '' }  %>
+
+        <h1>New payment</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Back', payments_path %>
+
+<%= render 'layouts/footer' %>
+    </div>

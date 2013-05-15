@@ -1,0 +1,25 @@
+
+<div class="masthead">
+	<ul class="nav nav-pills pull-right">
+		<li <% if active == 'Home' %> class="active" <% end %> >
+			<%= link_to "Home", root_path %>
+		</li>
+		<li <% if active == 'About' %> class="active" <% end %> >
+			<%= link_to "About", about_path %>
+		</li>
+
+		<% if user_signed_in? %>
+			<li <% if active == 'Logout' %> class="active" <% end %> >
+				<%= link_to('Logout', destroy_user_session_path, :method => :delete) %> 
+			</li>
+		<% else %>
+			<li <% if active == 'Sign in' %> class="active" <% end %> >
+				<%= link_to "Sign in", payments_path %>
+			</li>
+		<% end %>
+	</ul>
+	<h3 class="muted">
+		PayMonkey
+	</h3>
+</div>	
+<hr>

@@ -1,5 +1,73 @@
 <% provide(:title, 'Home') %>
-<h1>PayMonkey</h1>
-<p>
-  This is the home page for PayMonkey
-</p>
+    <div class="container-narrow">
+    	<%= render :partial => 'layouts/header', :locals => { :active => 'Home' }  %>
+    	<div class="jumbotron">
+    		<h2>
+    			Get friends who owe you money to pay you back
+    		</h2>
+    		<p class="lead">
+    			Track money that friends owe you so you don't forget.  Send automated reminders so you don't have to nag.  Get paid back and buy yourself that Chipotle burrito.
+    		</p>
+    	
+            <br>
+            <% if user_signed_in? %>
+            <%= link_to 'Go to Payments', payments_path, class: "btn btn-large btn-success" %>
+            <% else %>
+            <%= link_to 'Sign up now!', new_user_registration_path, class: "btn btn-large btn-success" %>
+            <% end %>
+    	</div>
+    	<!--
+        <hr>
+    	<div class="row-fluid marketing">
+    		<div class="span6">
+    			<h4>
+    				Subheading
+    			</h4>
+    			<p>
+    				Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis
+    				interdum.
+    			</p>
+    			<h4>
+    				Subheading
+    			</h4>
+    			<p>
+    				Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis
+    				consectetur purus sit amet fermentum.
+    			</p>
+    			<h4>
+    				Subheading
+    			</h4>
+    			<p>
+    				Maecenas sed diam eget risus varius blandit sit amet non magna.
+    			</p>
+    		</div>
+    		<div class="span6">
+    			<h4>
+    				Subheading
+    			</h4>
+    			<p>
+    				Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis
+    				interdum.
+    			</p>
+    			<h4>
+    				Subheading
+    			</h4>
+    			<p>
+    				Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis
+    				consectetur purus sit amet fermentum.
+    			</p>
+    			<h4>
+    				Subheading
+    			</h4>
+    			<p>
+    				Maecenas sed diam eget risus varius blandit sit amet non magna.
+    			</p>
+    		</div>
+    	</div>
+    	<hr>
+        -->
+        <%= render 'layouts/footer' %>
+    </div>
+  
+      
+    

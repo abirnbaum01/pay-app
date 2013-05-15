@@ -1,0 +1,67 @@
+<%= form_for(@payment) do |f| %>
+  <% if @payment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@payment.errors.count, "error") %> prohibited this payment from being saved:</h2>
+
+      <ul>
+      <% @payment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <form class="form-horizontal"><div class="field">
+    <div class="control-group">
+      
+        <%= f.label :email, "Lendee's Email", class: "control-label" %><br />
+        <div class="controls">
+          <%= f.text_field :email %>
+        </div>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <div class="field">
+        <div class="input-prepend">
+          <%= f.label :amount, "Amount Owed", class: "control-label" %><br />
+          <div class="controls">
+            <span class="add-on">$</span>
+          
+            <%= f.text_field :amount, class: "Span2", id: "prependedInput" %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <div class="field">
+        <%= f.label :frequency, "Send Reminder Emails", class: "control-label" %><br />
+        <div class="controls">
+          <%= f.select :frequency, [['Biweekly', 'Biweekly'],['Weekly', 'Weekly'], ['Daily', 'Daily'], ['No reminder', 'No reminder']] %>
+        </div>
+      </div>
+    </div>
+    
+    <div class="control-group">
+      <div class="field">
+        <%= f.label :description, "Note", class: "control-label" %><br />
+        <div class="controls">
+          <%= f.text_field :description %>
+        </div>
+      </div>
+    </div>  
+
+    <div class="field">
+      <%= f.hidden_field :paid, :value => "Pending" %>
+      <!--<%= f.label :paid %><br />
+      <%= f.select :paid, [['User claims yes']] %> -->
+    </div>
+    <div class="control-group">
+      <div class="actions">
+        <div class="controls">  
+          <%= f.submit %>
+        </div>
+      </div>
+    </div>
+  </form>
+<% end %>

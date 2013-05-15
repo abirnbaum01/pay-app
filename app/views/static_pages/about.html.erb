@@ -1,5 +1,7 @@
 <% provide(:title, 'About') %>
-<h1>About</h1>
-<p>
-  If you are interested in learning more about this page, please contact me at birnbaum DOT adam AT gmail DOT com
-</p>
+    <div class="container-narrow">
+    	<%= render :partial => 'layouts/header', :locals => { :active => 'About' }  %>
+
+		This site was developed by Adam Birnbaum.  You can contact him at birnbaum DOT adam AT gmail DOT com.
+    	<%= render 'layouts/footer' %>
+    </div>
