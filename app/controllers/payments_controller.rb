@@ -46,7 +46,7 @@ class PaymentsController < ApplicationController
 
     respond_to do |format|
       if @payment.save
-        format.html { redirect_to @payment, notice: 'Payment was successfully created.' }
+        format.html { redirect_to payments_url, :flash => { notice: 'Payment was successfully created.' } }
         format.json { render json: @payment, status: :created, location: @payment }
       else
         format.html { render action: "new" }
@@ -62,7 +62,7 @@ class PaymentsController < ApplicationController
 
     respond_to do |format|
       if @payment.update_attributes(params[:payment])
-        format.html { redirect_to @payment, notice: 'Payment was successfully updated.' }
+        format.html { redirect_to payments_url, :flash => { :success => "Payment was successfully updated." } }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -78,7 +78,7 @@ class PaymentsController < ApplicationController
     @payment.destroy
 
     respond_to do |format|
-      format.html { redirect_to payments_url }
+      format.html { redirect_to payments_url, :flash => { :success => "Payment was successfully deleted." }  }
       format.json { head :no_content }
     end
   end

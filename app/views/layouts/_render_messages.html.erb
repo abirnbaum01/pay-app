@@ -1,0 +1,12 @@
+<% if not @messages_rendered -%>
+  <% if flash[:error] -%>
+    <p class='alert alert-error'><%=h flash[:error] %></p>
+  <% end -%>
+  <% if flash[:notice] -%>
+    <p class='alert'><%=h flash[:notice] %></p>
+  <% end -%>
+   <% if flash[:success] -%>
+    <p class='alert alert-success'><%=h flash[:success] %></p>
+  <% end -%>
+<% end -%>
+<% @messages_rendered = true -%>
