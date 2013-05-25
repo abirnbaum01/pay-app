@@ -10,12 +10,18 @@
       </ul>
     </div>
   <% end %>
-  <form class="form-horizontal"><div class="field">
-    <div class="control-group">
-      
+  <form class="form-horizontal">
+    <div class="field">
+      <div class="control-group">
         <%= f.label :email, "Lendee's Email", class: "control-label" %><br />
         <div class="controls">
+
           <%= f.text_field :email %>
+
+          <!-- don't use f.collection_select b/c payment already tied to f -->
+          <!-- <%#= collection_select :payment, :user_id, @payment_current_user, :email, :email, {:include_blank => "Please select"} %> -->
+     
+        
         </div>
       </div>
     </div>
@@ -37,7 +43,7 @@
       <div class="field">
         <%= f.label :frequency, "Send Reminder Emails", class: "control-label" %><br />
         <div class="controls">
-          <%= f.select :frequency, [['Biweekly', 'Biweekly'],['Weekly', 'Weekly'], ['Daily', 'Daily'], ['No reminder', 'No reminder']] %>
+          <%= f.select :frequency, [['Biweekly', 'biweekly'],['Weekly', 'weekly'], ['Daily', 'daily'], ['No reminder', 'no_reminder']] %>
         </div>
       </div>
     </div>
@@ -52,9 +58,7 @@
     </div>  
 
     <div class="field">
-      <%= f.hidden_field :paid, :value => "Pending" %>
-      <!--<%= f.label :paid %><br />
-      <%= f.select :paid, [['User claims yes']] %> -->
+      <%= f.hidden_field :paid, :value => "pending" %>
     </div>
     <div class="control-group">
       <div class="actions">
@@ -65,3 +69,17 @@
     </div>
   </form>
 <% end %>
+
+<!-- Script to check if user is trying to add email -->
+
+http://stackoverflow.com/questions/9613750/dynamically-change-form-based-on-value-selected-in-combobox-in-ruby-on-rails
+
+$("#services").change(function() {
+   var selopt = $(this.children[this.selectedIndex]),
+       isCredit = parseInt(selopt.attr('data-iscredit'));
+   if (isCredit === 0) {
+       $("#payment_terms").hide();
+   } else {
+       $("#payment_terms").show();
+   }
+})

@@ -3,7 +3,7 @@ require 'valid_email'
 class Payment < ActiveRecord::Base
   include ActiveModel::Validations
 
-  attr_accessible :amount, :description, :email, :frequency, :paid
+  attr_accessible :amount, :description, :email, :frequency, :paid, :user_id
   belongs_to :user
 
   validates :email, :presence => true, :email => true

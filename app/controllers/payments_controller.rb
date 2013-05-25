@@ -28,6 +28,9 @@ class PaymentsController < ApplicationController
   def new
     @payment = current_user.payments.new
 
+    # get list of current_user's email addresses in form
+    @payment_current_user = current_user.payments.all
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @payment }
@@ -43,6 +46,7 @@ class PaymentsController < ApplicationController
   # POST /payments.json
   def create
     @payment = current_user.payments.new(params[:payment])
+    @payment_current_user = current_user.payments.all
 
     respond_to do |format|
       if @payment.save
