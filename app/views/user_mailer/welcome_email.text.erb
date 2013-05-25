@@ -1,0 +1,10 @@
+Hello, <%= @payment.email %>.  This is PayMonkey, your friendly neighborhood loan shark :)
+==========================================================================================
+
+You owe some money to a friend, who wants to be paid back.  
+  * Payment description: <%= @payment.description %>
+  * Payment amount:  <%= @payment.amount %>
+
+We'll send you reminders so you don't forget.  Once you have paid back your friend, follow this link to confirm and stop receiving these reminders: <%= @url %>.
+
+Thanks and have a great day!
