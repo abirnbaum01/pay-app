@@ -26,10 +26,9 @@ class PaymentsController < ApplicationController
   # GET /payments/new
   # GET /payments/new.json
   def new
-    @payment = current_user.payments.new
 
-    # get list of current_user's email addresses in form
-    @payment_current_user = current_user.payments.all
+    # Use "build" rather than "new" for association current_user.payments
+    @payment = current_user.payments.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -45,8 +44,7 @@ class PaymentsController < ApplicationController
   # POST /payments
   # POST /payments.json
   def create
-    @payment = current_user.payments.new(params[:payment])
-    @payment_current_user = current_user.payments.all
+    @payment = current_user.payments.build(params[:payment])
 
     respond_to do |format|
       if @payment.save

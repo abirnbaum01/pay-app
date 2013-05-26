@@ -160,9 +160,6 @@ GEM
     uglifier (1.2.3)
       execjs (>= 0.3.0)
       multi_json (>= 1.0.2)
-    valid_email (0.0.4)
-      activemodel
-      mail
     warden (1.2.1)
       rack (>= 1.0)
     websocket (1.0.7)
@@ -191,5 +188,4 @@ DEPENDENCIES
   sass-rails (= 3.2.5)
   sqlite3 (= 1.3.5)
   uglifier (= 1.2.3)
-  valid_email
   will_paginate (= 3.0.3)

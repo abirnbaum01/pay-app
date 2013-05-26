@@ -15,11 +15,11 @@
       <div class="control-group">
         <%= f.label :email, "Lendee's Email", class: "control-label" %><br />
         <div class="controls">
+          
+          <!-- Old email input was text_field; code works fine when using the following code: -->
+          <%#= f.text_field :email %>
 
-          <%= f.text_field :email %>
-
-          <!-- don't use f.collection_select b/c payment already tied to f -->
-          <!-- <%#= collection_select :payment, :user_id, @payment_current_user, :email, :email, {:include_blank => "Please select"} %> -->
+          <%= f.collection_select :email, current_user.payments, :email, :email, {:include_blank => "Please select"} %>
      
         
         </div>
