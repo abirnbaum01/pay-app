@@ -1,11 +1,11 @@
 Hello, <%= @payment.email %>!
 This is PayMonkey, your friendly neighborhood loan shark :)
 ===============================================================
-We're sending you a friendly reminder that you owe some money to <%#= @payment.user.email %>, who wants to be paid back.
+We're sending you a friendly reminder that you owe some money to <%= @payment.user.email %>, who wants to be paid back.
 Payment description: <%= @payment.description %>
 Payment amount: $<%= @payment.amount %>
 
-We'll send you <%= @payment.frequency %> reminders so you don't forget.  Once you have paid back <%#= @payment.user.email %>, follow this link to confirm and stop receiving these reminders:
+We'll send you <%= @payment.frequency %> reminders so you don't forget.  Once you have paid back <%= @payment.user.email %>, follow this link to confirm and stop receiving these reminders:
 <%= @url %>
 
 Thanks and have a great day!
