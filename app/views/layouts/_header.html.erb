@@ -9,6 +9,10 @@
 		</li>
 
 		<% if user_signed_in? %>
+			<li <% if active == 'Payments' %> class="active" <% end %> >
+				<%= link_to "Payments", payments_path %> 
+			</li>
+
 			<li <% if active == 'Logout' %> class="active" <% end %> >
 				<%= link_to('Logout', destroy_user_session_path, :method => :delete) %> 
 			</li>

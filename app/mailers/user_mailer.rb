@@ -7,10 +7,9 @@ class UserMailer < ActionMailer::Base
     @url  = payments_url
     mail(:to => payment.email, :subject => "Yo, you owe some money!")
   end
-  #def reminder_email(payment)
-  #	@current_user = current_user
-  #	@payment = payment
-  #	@url = payments_url
-  #	mail(:to => payment.email, :subject => "Yo, you owe some money!")
-  #end
+
+  def reminder_email
+    @url = payments_url
+    mail(:to => payment.email, :subject => "Reminder that you owe some money")
+  end
 end

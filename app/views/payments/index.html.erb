@@ -1,6 +1,6 @@
 <% provide(:title, 'About') %>
     <div class="container-narrow">
-        <%= render :partial => 'layouts/header', :locals => { :active => '' }  %>
+        <%= render :partial => 'layouts/header', :locals => { :active => 'Payments' }  %>
 
 <h1>Listing payments</h1>
 <%= render 'layouts/render_messages' %>
@@ -16,7 +16,7 @@
     <th></th>
   </tr>
 
-<% @payments.each do |payment| %>
+<% @payments.sort { |a, b| a.email <=> b.email }.each do |payment| %>
   <tr>
     <td><%= payment.email %></td>
     <td><%= payment.description %></td>
@@ -32,8 +32,7 @@
 
 <br />
 
-<%= link_to 'New Payment', new_payment_path, class: "btn btn-primary" %>
-<br>
+<%= link_to 'New Payment', new_payment_path, class: "btn btn-primary" %><br />
 
 <%= render 'layouts/footer' %>
     </div>
