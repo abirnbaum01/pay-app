@@ -9,11 +9,12 @@
       <b>This is PayMonkey, your friendly neighborhood loan shark :)</b><br/>
     </p>
     <p>
-      We're sending you a friendly reminder that you owe some money to <%= @all_payments.first.user.email %>, who wants to be paid back.<br/>
-      <% @all_payments.each do |indv_payment| %>
-        Payment description: <%= indv_payment.description %><br/>
-        Payment amount: $<%= indv_payment.amount %><br/>
-      <% end %>
+      We're sending you a friendly reminder that you owe some money to <%= @all_payments.first.user.email %>, who wants to be paid back.  Specifically, you owe:<br/>
+      <ul>
+        <% @all_payments.each do |indv_payment| %>
+          <li>$<%= indv_payment.amount %> for <%= indv_payment.description %></li>
+        <% end %>
+      </ul>
     </p>
     <p>
       We'll send you <%#= @payment.frequency %> reminders so you don't forget.  Once you have paid back <%= @all_payments.first.user.email %>, follow <%= link_to 'this link', @url %> to confirm and stop receiving these reminders.<br/>
