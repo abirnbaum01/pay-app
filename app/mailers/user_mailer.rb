@@ -8,7 +8,8 @@ class UserMailer < ActionMailer::Base
     mail(:to => payment.email, :subject => "Yo, you owe some money!")
   end
 
-  def reminder_email
+  def reminder_email(payment)
+    @payment = payment
     @url = payments_url
     mail(:to => payment.email, :subject => "Reminder that you owe some money")
   end
