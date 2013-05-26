@@ -19,9 +19,7 @@
           <!-- Old email input was text_field; code works fine when using the following code: -->
           <%#= f.text_field :email %>
 
-          <%= f.collection_select :email, current_user.payments, :email, :email, {:include_blank => "Please select"} %>
-     
-        
+          <%= f.collection_select :email, current_user.payments, :email, :email, {:include_blank => "Please select"} %> 
         </div>
       </div>
     </div>
