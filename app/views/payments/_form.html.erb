@@ -37,7 +37,7 @@
     <div class="control-group">
       <div class="field">
         <div class="input-prepend">
-          <%= f.label :amount, "Amount Owed", class: "control-label" %><br />
+          <%= f.label :amount, "Amount owed", class: "control-label" %><br />
           <div class="controls">
             <span class="add-on">$</span>
           
@@ -49,7 +49,7 @@
 
     <div class="control-group">
       <div class="field">
-        <%= f.label :frequency, "Send Reminder Emails", class: "control-label" %><br />
+        <%= f.label :frequency, "Send reminder emails", class: "control-label" %><br />
         <div class="controls">
           <%= f.select :frequency, [['Biweekly', 'biweekly'],['Weekly', 'weekly'], ['Daily', 'daily'], ['No reminder', 'no_reminder']], {:include_blank => 'Please select'} %>
         </div>
@@ -58,7 +58,7 @@
     
     <div class="control-group">
       <div class="field">
-        <%= f.label :description, "Note", class: "control-label" %><br />
+        <%= f.label :description, "Description of what is owed", class: "control-label" %><br />
         <div class="controls">
           <%= f.text_field :description %>
         </div>
