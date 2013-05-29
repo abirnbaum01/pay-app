@@ -4,20 +4,19 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   </head>
   <body>
-    <h1>Hello, <%= @payment.email %>!</h1>
+    <h1>Hello, <a name="text_email"><%= @payment.email %>!</a></h1>
     <p>
       <b>This is PayMonkey, your friendly neighborhood loan shark :)</b><br/>
     </p>
     <p>
-      You owe some money to <%= @current_user.email %>, who wants to be paid back.<br/>
+      You owe some money to <a name="text_email"><%= @current_user.email %></a>, who wants to be paid back.<br/>
       Payment description: <%= @payment.description %><br/>
       Payment amount: $<%= @payment.amount %><br/>
     </p>
     <p>
-      We'll send you <%= @payment.frequency %> reminders so you don't forget.  Once you have paid back <%= @payment.user.email %>, follow <%= link_to 'this link', @url %> to confirm and stop receiving these reminders.<br/>
+      We'll send you <%= @payment.frequency %> reminders so you don't forget.  Once you have paid back <a name="text_email"><%= @payment.user.email %></a>, follow <%= link_to 'this link', @url %> to confirm and stop receiving these reminders.<br/>
     </p>
     <p>Thanks and have a great day!</p><br/>
-     <hr>
-    <p>Get a free account at PayMonkey to get your friends to pay back money they owe you.  <%= link_to 'Sign up now!', new_user_registration_url %></p>
+    <%= render 'layouts/email_footer' %>
   </body>
 </html>
