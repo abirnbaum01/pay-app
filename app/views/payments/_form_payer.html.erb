@@ -1,0 +1,51 @@
+<%= form_for(@payment) do |f| %>
+  <% if @payment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@payment.errors.count, "error") %> prohibited this payment from being saved:</h2>
+
+      <ul>
+      <% @payment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<p>
+  <b>Email:</b>
+  <%= @payment.email %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @payment.description %>
+</p>
+
+<p>
+  <b>Amount:</b>
+  <%= @payment.amount %>
+</p>
+
+
+
+  <form class="form-horizontal">
+
+
+    <div class="control-group">
+      <div class="field">
+        <%= f.label :paid, "Paid Status", class: "control-label" %><br />
+        <div class="controls">
+          <%= f.select :paid, [ ['Pending', 'pending'],['Paid - pending confirmation', 'paid_pending_confirmation'] ], {:include_blank => 'Please select'} %>
+        </div>
+      </div>
+    </div>
+    
+    <div class="control-group">
+      <div class="actions">
+        <div class="controls">  
+          <%= f.submit %>
+        </div>
+      </div>
+    </div>
+  </form>
+<% end %>

@@ -4,7 +4,11 @@
 
 <h1>Editing payment</h1>
 
-<%= render 'form' %>
+<% if @token %>
+	<%= render 'form_payer' %>
+<% else %>
+	<%= render 'form_loaner' %>
+<% end %>
 
 <%= link_to 'Show', @payment %> |
 <%= link_to 'Back', payments_path %>

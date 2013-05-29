@@ -1,0 +1,22 @@
+<table class="table table-striped table-bordered table-condensed">
+  <tr>
+    <th>Owe money to</th>
+    <th>Description</th>
+    <th>Amount Owed</th>
+    <th>Paid Status</th>
+    <th></th>
+  </tr>
+
+<% @payments.sort { |a, b| a.user.email <=> b.user.email }.each do |payment| %>
+  <tr>
+    <td><%= payment.user.email %></td>
+    <td><%= payment.description %></td>
+    <td>$<%= payment.amount %></td>
+    <td><%= payment.paid.capitalize %></td>
+    <!--<td><%#= link_to 'Show', payment %></td>-->
+    <td><%= link_to 'Edit status', edit_payment_path(payment) %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
