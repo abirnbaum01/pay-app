@@ -1,10 +1,10 @@
 <% provide(:title, 'About') %>
     <div class="container-narrow">
-        <%= render :partial => 'layouts/header', :locals => { :active => '' }  %>
+        <%= render :partial => 'layouts/header', :locals => { :active => 'Payments' }  %>
 
         <h1>New payment</h1>
 
-<%= render 'form' %>
+<%= render 'form_loaner' %>
 
 <%= link_to 'Back', payments_path %>
 

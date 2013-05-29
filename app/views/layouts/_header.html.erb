@@ -9,6 +9,10 @@
 		</li>
 
 		<% if user_signed_in? %>
+			<li <% if active == 'Payments' %> class="active" <% end %> >
+				<%= link_to "Payments", payments_path %> 
+			</li>
+
 			<li <% if active == 'Logout' %> class="active" <% end %> >
 				<%= link_to('Logout', destroy_user_session_path, :method => :delete) %> 
 			</li>
@@ -20,7 +24,7 @@
 	</ul>
 	<h3 class="muted">
 		PayMonkey
-		<%= image_tag "monkey.jpg", :size => '50x50', class: "img-rounded" %>
+		<%= image_tag "monkey.jpg", :size => '35x35', class: "img-rounded" %>
 	</h3>
 </div>	
 <hr>

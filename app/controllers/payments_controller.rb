@@ -2,9 +2,17 @@ class PaymentsController < ApplicationController
   # GET /payments
   # GET /payments.json
   
+  
   before_filter :authenticate_user!
+  
   def index
-    @payments = current_user.payments
+    @token = nil
+
+    if @token
+      @payments = Payment.all
+    else
+      @payments = current_user.payments
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -38,7 +46,13 @@ class PaymentsController < ApplicationController
 
   # GET /payments/1/edit
   def edit
-    @payment = current_user.payments.find(params[:id])
+    @token = nil
+
+    if @token
+      @payment = Payment.find(params[:id])
+    else
+      @payment = current_user.payments.find(params[:id])
+    end
   end
 
   # POST /payments
@@ -50,7 +64,7 @@ class PaymentsController < ApplicationController
       if @payment.save
         
         # Tell the UserMailer to send a welcome Email after save
-        UserMailer.welcome_email(@payment).deliver
+        UserMailer.welcome_email(@payment, current_user).deliver
 
         format.html { redirect_to payments_url, :flash => { notice: 'Payment was successfully created.' } }
         format.json { render json: @payment, status: :created, location: @payment }
