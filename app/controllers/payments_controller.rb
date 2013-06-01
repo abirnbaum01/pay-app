@@ -43,13 +43,14 @@ class PaymentsController < ApplicationController
 
   # GET /payments/1/edit
   def edit
-    @token = nil
+    #test out hypothetically if a user was authenticated via token
+    #@token = nil
 
-    if @token
-      @payment = Payment.find(params[:id])
-    else
+    #if @token
+    #  @payment = Payment.find(params[:id])
+    #else
       @payment = current_user.payments.find(params[:id])
-    end
+    #end
   end
 
   # POST /payments
