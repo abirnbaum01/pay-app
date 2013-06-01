@@ -6,17 +6,14 @@ class PaymentsController < ApplicationController
   before_filter :authenticate_user!
   
   def index
-    @token = nil
 
-    if @token
-      @payments = Payment.all
-    else
-      @payments = current_user.payments
-    end
+    @payments_all = Payment.all
+    @payments_current = current_user.payments
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @payments }
+      format.json { render json: @payments_all }
+      format.json { render json: @payments_current }
     end
   end
 

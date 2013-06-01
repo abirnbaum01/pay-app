@@ -2,14 +2,15 @@
     <div class="container-narrow">
         <%= render :partial => 'layouts/header', :locals => { :active => 'Payments' }  %>
 
-<h1>Listing payments</h1>
+
+
 <%= render 'layouts/render_messages' %>
 
-<% if @token %>
-    <%= render 'payments/index_payer' %>
-<% else %>
-    <%= render 'payments/index_loaner' %>
-<% end %>
+<%= render 'payments/index_loaner' %>
+<br/>
+<hr>
+
+<%= render 'payments/index_payer' %>
 
 <%= render 'layouts/footer' %>
     </div>

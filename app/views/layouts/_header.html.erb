@@ -21,10 +21,15 @@
 				<%= link_to "Sign in", payments_path %>
 			</li>
 		<% end %>
+		<% if user_signed_in? %>
+			<i>Logged in as <%= current_user.email %></i>
+		<% end %>	
 	</ul>
 	<h3 class="muted">
 		PayMonkey
 		<%= image_tag "monkey.jpg", :size => '35x35', class: "img-rounded" %>
+
 	</h3>
+
 </div>	
 <hr>
