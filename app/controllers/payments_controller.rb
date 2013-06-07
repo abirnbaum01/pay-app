@@ -43,14 +43,11 @@ class PaymentsController < ApplicationController
 
   # GET /payments/1/edit
   def edit
-    #test out hypothetically if a user was authenticated via token
-    #@token = nil
-
-    #if @token
-    #  @payment = Payment.find(params[:id])
-    #else
+    if current_user.not_registered
+      @payment = Payment.find(params[:id])
+    else
       @payment = current_user.payments.find(params[:id])
-    #end
+    end
   end
 
   # POST /payments
@@ -58,9 +55,9 @@ class PaymentsController < ApplicationController
   def create
     @payment = current_user.payments.build(params[:payment])
     
-    #if payee does not exist as user, then create new user
+    #if payee does not exist as user, then create new user with Token
     unless User.find_by_email(params[:payment][:email].downcase)  
-      u = User.new({:email => params[:payment][:email].downcase, :password => nil, :password_confirmation => nil })
+      u = User.new({:email => params[:payment][:email].downcase, :password => nil, :password_confirmation => nil, :not_registered => 1 })
       u.skip_confirmation!
       u.save(:validate => false)  #skip validation
       u.reset_authentication_token!
@@ -84,7 +81,12 @@ class PaymentsController < ApplicationController
   # PUT /payments/1
   # PUT /payments/1.json
   def update
-    @payment = current_user.payments.find(params[:id])
+    if current_user.not_registered
+      @payment = Payment.find(params[:id])
+    else
+      @payment = current_user.payments.find(params[:id])
+    end
+
 
     respond_to do |format|
       if @payment.update_attributes(params[:payment])

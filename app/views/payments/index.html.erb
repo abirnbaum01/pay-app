@@ -6,9 +6,12 @@
 
 <%= render 'layouts/render_messages' %>
 
-<%= render 'payments/index_loaner' %>
-<br/>
-<hr>
+
+<% if current_user.not_registered != 1 %>
+	<%= render 'payments/index_loaner' %>
+	<br/>
+	<hr>
+<% end %>
 
 <%= render 'payments/index_payer' %>
 
