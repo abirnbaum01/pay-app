@@ -60,7 +60,7 @@ class PaymentsController < ApplicationController
     
     #if payee does not exist as user, then create new user
     unless User.find_by_email(params[:payment][:email].downcase)  
-      u = User.new({:email => params[:payment][:email].downcase, :password => "11111", :password_confirmation => "11111" })
+      u = User.new({:email => params[:payment][:email].downcase, :password => nil, :password_confirmation => nil })
       u.skip_confirmation!
       u.save(:validate => false)  #skip validation
     end
