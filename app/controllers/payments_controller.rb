@@ -63,6 +63,7 @@ class PaymentsController < ApplicationController
       u = User.new({:email => params[:payment][:email].downcase, :password => nil, :password_confirmation => nil })
       u.skip_confirmation!
       u.save(:validate => false)  #skip validation
+      u.reset_authentication_token!
     end
 
     respond_to do |format|
