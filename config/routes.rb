@@ -6,6 +6,9 @@ PayMonkey::Application.routes.draw do
 
   match '/about', to: 'static_pages#about'
 
+  match '/payments/:id/editnr', to: 'payments#editnr', as: 'editnr', via: 'get'
+  match '/payments/nr/:id', to: 'payments#updatenr', via: 'put'
+
   root :to => "static_pages#home"
 
   # The priority is based upon order of creation:

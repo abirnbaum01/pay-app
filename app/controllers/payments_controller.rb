@@ -20,7 +20,7 @@ class PaymentsController < ApplicationController
   # GET /payments/1
   # GET /payments/1.json
   def show
-    @payment = current_user.payments.find(params[:id])
+    @payment = current_user.payments.find(params[:id])  #*** THIS WILL GIVE ERROR FOR SHOWING MONEY YOU OWE
 
     respond_to do |format|
       format.html # show.html.erb
@@ -43,11 +43,12 @@ class PaymentsController < ApplicationController
 
   # GET /payments/1/edit
   def edit
-    if current_user.not_registered
-      @payment = Payment.find(params[:id])
-    else
-      @payment = current_user.payments.find(params[:id])
-    end
+    @payment = current_user.payments.find(params[:id])
+  end
+
+  # GET /payments/1/edit ... editing for non-registered users
+  def editnr 
+    @payment = Payment.find(params[:id])
   end
 
   # POST /payments
@@ -81,12 +82,21 @@ class PaymentsController < ApplicationController
   # PUT /payments/1
   # PUT /payments/1.json
   def update
-    if current_user.not_registered
-      @payment = Payment.find(params[:id])
-    else
-      @payment = current_user.payments.find(params[:id])
-    end
+    @payment = current_user.payments.find(params[:id])
 
+    respond_to do |format|
+      if @payment.update_attributes(params[:payment])
+        format.html { redirect_to payments_url, :flash => { :success => "Payment was successfully updated." } }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @payment.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def updatenr
+    @payment = Payment.find(params[:id])
 
     respond_to do |format|
       if @payment.update_attributes(params[:payment])

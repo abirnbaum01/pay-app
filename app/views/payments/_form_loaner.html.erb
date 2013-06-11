@@ -47,13 +47,17 @@
       </div>
     </div>
 
-    <div class="control-group">
+    <!--div class="control-group">
       <div class="field">
-        <%= f.label :frequency, "Send reminder emails", class: "control-label" %><br />
+        <%#= f.label :frequency, "Send reminder emails", class: "control-label" %><br />
         <div class="controls">
-          <%= f.select :frequency, [['Biweekly', 'biweekly'],['Weekly', 'weekly'], ['Daily', 'daily'], ['No reminder', 'no_reminder']], {:include_blank => 'Please select'} %>
+          <%#= f.select :frequency, [['Biweekly', 'biweekly'],['Weekly', 'weekly'], ['Daily', 'daily'], ['No reminder', 'no_reminder']], {:include_blank => 'Please select'} %>
         </div>
       </div>
+    </div> -->
+
+    <div class="field">
+      <%= f.hidden_field :frequency, :value => "weekly" %>
     </div>
     
     <div class="control-group">

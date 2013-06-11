@@ -1,4 +1,4 @@
-<%= form_for(@payment) do |f| %>
+<%= form_for @payment, :url => { :action => "updatenr" } do |f| %>
   <% if @payment.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@payment.errors.count, "error") %> prohibited this payment from being saved:</h2>
@@ -35,7 +35,7 @@
       <div class="field">
         <%= f.label :paid, "Paid Status", class: "control-label" %><br />
         <div class="controls">
-          <%= f.select :paid, [ ['Pending', 'pending'],['Paid - pending confirmation', 'paid_pending_confirmation'] ], {:include_blank => 'Please select'} %>
+          <%= f.select :paid, [ ['Pending', 'pending'],['Paid', 'paid'] ], {:include_blank => 'Please select'} %>
         </div>
       </div>
     </div>

@@ -13,13 +13,22 @@
 				<%= link_to "Payments", payments_path %> 
 			</li>
 
+			<li <% if active == 'Edit account' %> class="active" <% end %> >
+				<%= link_to "Edit Account", edit_user_registration_path %> 
+			</li>
+
 			<li <% if active == 'Logout' %> class="active" <% end %> >
 				<%= link_to('Logout', destroy_user_session_path, :method => :delete) %> 
 			</li>
 		<% else %>
 			<li <% if active == 'Sign in' %> class="active" <% end %> >
-				<%= link_to "Sign in", payments_path %>
+				<%= link_to "Sign In", new_user_session_path %>
 			</li>
+
+			<li <% if active == 'Sign up' %> class="active" <% end %> >
+				<%= link_to "Sign Up", new_user_registration_path %>
+			</li>
+
 		<% end %>
 		<% if user_signed_in? %>
 			<i>Logged in as <%= current_user.email %></i>
