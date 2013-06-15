@@ -1,8 +1,8 @@
     <p>
-      Hello, <%= payer_email %>!  This is PayMonkey, your friendly neighborhood loan shark :)<br/>
+      Hello, <%= payer_email %>!  This is PayMonkee, your friendly neighborhood loan shark :)<br/>
     </p>
     <p>
-      <%= loaner_email %> wants to be payed back and has signed you up for a PayMonkey reminder.  Specifically, you owe
+      <%= loaner_email %> recently lent you some money and has signed you up for a PayMonkee reminder.  Specifically, you owe
 
       <% if mailer_type == 'single_payment' %>
         <%= number_to_currency(payment_amount) %> for <%= payment_description.downcase %>.

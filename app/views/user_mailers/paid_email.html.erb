@@ -6,7 +6,7 @@
   <body>
 
   <p>
-      Hello, <%= User.find(@payment.user_id).email %>!  This is PayMonkey, your friendly neighborhood loan shark :)<br/>
+      Hello, <%= User.find(@payment.user_id).email %>!  This is PayMonkee, your friendly neighborhood loan shark :)<br/>
     </p>
     <p>
       We wanted to let you know that <%= @payment.email %> has paid you back <%= number_to_currency(@payment.amount) %> for <%= @payment.description %>.

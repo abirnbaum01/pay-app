@@ -1,6 +1,6 @@
 class UserMailers < ActionMailer::Base
   
-  default :from => 'no-reply@paymonkee.com', :return_path => 'info@paymonkee.com'
+  default :from => 'no-reply@paymonkee.com', :return_path => 'support@paymonkee.com'
 
   def generate_url(user)
     if user.encrypted_password == ""  #user has not yet signed up
