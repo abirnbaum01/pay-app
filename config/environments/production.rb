@@ -69,5 +69,5 @@ PayMonkey::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
-  ActionMailer::Base.smtp_settings = { :address => "smtp.gmail.com", :port => 587, :user_name => "ahbassociates@gmail.com", :password => 'rubytest', :authentication => "plain", :enable_starttls_auto => true }
+  ActionMailer::Base.smtp_settings = { :address => "smtpout.secureserver.net", :port => 80, :user_name => "support@paymonkee.com", :password => 'bongo', :authentication => "plain", :enable_starttls_auto => true }
 end

@@ -10,6 +10,7 @@ class UserMailers < ActionMailer::Base
     end 
   end
 
+  # this is called when a new payment is created from a registered user
   def welcome_email(payment)
     @payment = payment
     @url = generate_url(User.find_by_email(@payment.email))
@@ -36,6 +37,7 @@ class UserMailers < ActionMailer::Base
     mail(:to => @all_payments.first.email, :subject => "Reminder that you owe some money", :from => loaner_email, :return_path => loaner_email)
   end
 
+  # this is called when a payment status changes to "paid"
   def paid_email(payment)
     @payment = payment
 
