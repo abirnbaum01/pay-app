@@ -18,12 +18,12 @@
 
 <p>
   <b>Description:</b>
-  <%= @payment.description %>
+  <%= @payment.description.capitalize %>
 </p>
 
 <p>
   <b>Amount:</b>
-  <%= @payment.amount %>
+  <%= number_to_currency(@payment.amount) %>
 </p>
 
 

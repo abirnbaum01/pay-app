@@ -2,14 +2,14 @@
       Hello, <%= payer_email %>!  This is PayMonkey, your friendly neighborhood loan shark :)<br/>
     </p>
     <p>
-      You owe some money to <%= loaner_email %>, who wants to be paid back.  Specifically, you owe
+      <%= loaner_email %> wants to be payed back and has signed you up for a PayMonkey reminder.  Specifically, you owe
 
       <% if mailer_type == 'single_payment' %>
-        <%= number_to_currency(payment_amount) %> for <%= payment_description %>.
+        <%= number_to_currency(payment_amount) %> for <%= payment_description.downcase %>.
       <% else %>
         :<br/><ul>
           <% @all_payments.each do |indv_payment| %>
-            <li><%= number_to_currency(indv_payment.amount) %> for <%= indv_payment.description %></li>
+            <li><%= number_to_currency(indv_payment.amount) %> for <%= indv_payment.description.downcase %></li>
           <% end %>
         </ul>
       <% end %>
