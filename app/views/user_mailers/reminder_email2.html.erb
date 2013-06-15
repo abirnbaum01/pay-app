@@ -4,22 +4,10 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   </head>
   <body>
-    <h1>Hello, <a name="text_email"><%= @all_payments.first.email %></a>!</h1>
-    <p>
-      <b>This is PayMonkey, your friendly neighborhood loan shark :)</b><br/>
-    </p>
-    <p>
-      We're sending you a friendly reminder that you owe some money to <a name="text_email"><%= @all_payments.first.user.email %></a>, who wants to be paid back.  Specifically, you owe:<br/>
-      <ul>
-        <% @all_payments.each do |indv_payment| %>
-          <li>$<%= indv_payment.amount %> for <%= indv_payment.description %></li>
-        <% end %>
-      </ul>
-    </p>
-    <p>
-      We'll send you <%#= @payment.frequency %> reminders so you don't forget.  Once you have paid back <a name="text_email"><%= @all_payments.first.user.email %></a>, follow <%= link_to 'this link', @url %> to confirm and stop receiving these reminders.<br/>
-    </p>
-    <p>Thanks and have a great day!</p><br/>
-    <%= render 'layouts/email_footer' %>
+  
+  <%= render partial: 'layouts/email_body', locals: { loaner_email: @all_payments.first.user.email, payment_frequency: '', mailer_type: 'consolidate_payments' } %>
+  <br/>
+  <%= render 'layouts/email_footer' %>
+  
   </body>
 </html>
