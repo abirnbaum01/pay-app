@@ -102,7 +102,7 @@ class PaymentsController < ApplicationController
       if @payment.update_attributes(params[:payment])
         format.html { redirect_to payments_url, :flash => { :success => "Payment was successfully updated." } }
         format.json { head :no_content }
-        if @payment.update_attributes(params[:payment][:paid]) == "paid"
+        if @payment.paid == "paid"
           UserMailers.paid_email(@payment).deliver
         end
       else

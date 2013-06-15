@@ -43,6 +43,6 @@ class UserMailers < ActionMailer::Base
   def paid_email(payment)
   @payment = payment
 
-  mail(:to => User.find(@payment.user_id).email, :subject => "Reminder that you owe some money", :cc => @payment.email)
+  mail(:to => User.find(@payment.user_id).email, :subject => "You've been paid back!", :cc => @payment.email)
   end
 end

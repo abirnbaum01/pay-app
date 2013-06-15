@@ -1,1 +1,23 @@
-User has paid!!!
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+
+  <p>
+      Hello, <%= User.find(@payment.user_id).email %>!  This is PayMonkey, your friendly neighborhood loan shark :)<br/>
+    </p>
+    <p>
+      We wanted to let you know that <%= @payment.email %> has paid you back <%= number_to_currency(@payment.amount) %> for <%= @payment.description %>.
+    </p>
+    <p>
+      So, you can cancel the collection agency and tell Frido you won't be needing his somewhat painful "reminder services."
+    </p>
+    <p>Until next time, this is PayMonkey signing out!</p>
+
+
+  <br/>
+
+  </body>
+</html>

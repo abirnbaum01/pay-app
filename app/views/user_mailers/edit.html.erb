@@ -8,30 +8,16 @@
 
 <%= render 'form' %>
 
+<%= link_to 'Back', payments_path %>
+<br/><hr/>
 The email that will automatically be sent to people who owe you money is as follows:
-
-    <h1>Hello!</h1>
-    <p>
-      <b>This is PayMonkey, your friendly neighborhood loan shark :)</b><br/>
-    </p>
-    <p>
-      We're sending you a friendly reminder that you owe some money to [YOUR EMAIL ADDRESS], who wants to be paid back.<br/>
-      Payment description: [DESCRIPTION OF PAYMENT]<br/>
-      Payment amount: [AMOUNT OF PAYMENT]<br/>
-    </p>
-    <p>
-      You should payback [YOUR EMAIL ADDRESS] via [YOUR PAYMENT METHOD], at [YOUR PAYPAY ADDRESS/MAILING ADDRESS].
-    <p>
-      We'll send you weekly reminders so you don't forget.  Once you have paid back [YOUR EMAIL ADDRDSS] follow [LINK] to confirm and stop receiving these reminders.<br/>
-    </p>
-    <p>
-      [YOUR ADDITIONAL COMMENTS (IF ANY) WILL GO HERE]
-    </p>
-    <p>Thanks and have a great day!</p><br/>
-
+<br/><br/><br/>
+<i>
+<%= render partial: 'layouts/email_body', locals: { payer_email: "{ THEIR EMAIL ADDRESS }", loaner_email: "{ YOUR EMAIL ADDRESS }", payment_description: "{ PAYMENT DESCRIPTION }", payment_amount: "{ PAYMENT AMOUNT }", payment_frequency: "{ PAYMENT FREQUENCY }", mailer_type: 'single_payment' } %>
+</i>
 
 <%#= link_to 'Show', @payment %> <!-- | -->
-<%#= link_to 'Back', payments_path %>
+
 
 <%= render 'layouts/footer' %>
     </div>

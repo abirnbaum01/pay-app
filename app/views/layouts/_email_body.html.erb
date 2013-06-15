@@ -1,8 +1,8 @@
     <p>
-      Hello, <%= @payment.email %>!  This is PayMonkey, your friendly neighborhood loan shark :)<br/>
+      Hello, <%= payer_email %>!  This is PayMonkey, your friendly neighborhood loan shark :)<br/>
     </p>
     <p>
-      You owe some money to <a name="text_email"><%= loaner_email %></a>, who wants to be paid back.  Specifically, you owe
+      You owe some money to <%= loaner_email %>, who wants to be paid back.  Specifically, you owe
 
       <% if mailer_type == 'single_payment' %>
         <%= number_to_currency(payment_amount) %> for <%= payment_description %>.
@@ -16,6 +16,8 @@
 
     </p>
     <p>
-      We'll send you <%= payment_frequency %> reminders so you don't forget.  Once you have paid back <a name="text_email"><%= loaner_email %></a>, follow <%= link_to 'this link', @url %> to confirm and stop receiving these reminders.<br/>
+      We'll send you <%= payment_frequency %> reminders so you don't forget.  Once you have paid back <%= loaner_email %>, follow <%= link_to 'this link', @url %> to confirm and stop receiving these reminders.<br/>
     </p>
     <p>Thanks and have a great day!</p>
+
+    <!--a name="text_email"></a-->

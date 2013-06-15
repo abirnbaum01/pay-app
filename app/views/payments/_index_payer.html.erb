@@ -12,7 +12,7 @@
 
 <% @payments_all.sort { |a, b| a.user.email <=> b.user.email }.each do |payment| %>
   <tr>
-    <% if payment.email == current_user.email %>
+    <% if (payment.email == current_user.email) && (payment.paid != 'paid') %>
     <!--td><%#= payment.email %></td-->
     <td><%= payment.user.email %></td>
     <td><%= word_wrap(payment.description, :line_width => 8) %></td>

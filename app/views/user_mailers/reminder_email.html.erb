@@ -5,7 +5,7 @@
   </head>
   <body>
   
-  <%= render partial: 'layouts/email_body', locals: { loaner_email: @payment.user.email, payment_description: @payment.description, payment_amount: @payment.amount, payment_frequency: @payment.frequency, mailer_type: 'single_payment' } %>
+  <%= render partial: 'layouts/email_body', locals: { payer_email: @payment.email, loaner_email: @payment.user.email, payment_description: @payment.description, payment_amount: @payment.amount, payment_frequency: @payment.frequency, mailer_type: 'single_payment' } %>
   <br/>
   <%= render 'layouts/email_footer' %>
   
