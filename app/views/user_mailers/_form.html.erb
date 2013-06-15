@@ -1,0 +1,48 @@
+<%= form_for @user, url: user_mailer_path(@user), html: { method: :put } do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this payment from being saved:</h2>
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <form class="form-horizontal">
+    <div class="field">
+      <div class="control-group">
+        <%= f.label :pay_method, "How you should be paid back", class: "control-label" %><br />
+        <div class="controls">
+          <%=f.select :pay_method, [ [ 'Paypal', 'paypal' ], [ 'Mail a check', 'mail_check' ] ], {:include_blank => 'Please select'} %>
+        </div>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <div class="field">
+        <%= f.label :pay_desc, "Pay description", class: "control-label", id: 'add_pay_desc_label', style: 'display:none;' %><br />
+        <div class="controls">
+          <%= f.text_area :pay_desc, id: 'add_pay_desc_field', style: 'display:none;', :cols => 60, :rows => 1 %>
+        </div>
+      </div>
+    </div>  
+
+    <div class="control-group">
+      <div class="field">
+        <%= f.label :email_instructions, "Any additional comments to include in your email? (Optional)", class: "control-label" %><br />
+        <div class="controls">      
+          <%= f.text_area :email_instructions, :cols => 60, :rows => 3 %>
+        </div>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <div class="actions">
+        <div class="controls">  
+          <%= f.submit %>
+        </div>
+      </div>
+    </div>
+  </form>
+<% end %>

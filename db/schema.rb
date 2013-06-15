@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130607040538) do
+ActiveRecord::Schema.define(:version => 20130614113603) do
 
   create_table "payments", :force => true do |t|
     t.string   "email"
@@ -43,6 +43,9 @@ ActiveRecord::Schema.define(:version => 20130607040538) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.integer  "not_registered"
+    t.string   "pay_method"
+    t.text     "pay_desc"
+    t.text     "email_instructions"
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true

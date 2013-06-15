@@ -2,7 +2,7 @@ PayMonkey::Application.routes.draw do
   devise_for :users
 
   resources :payments
-  resources :user_mailer
+  resources :user_mailers
 
 
   match '/about', to: 'static_pages#about'
