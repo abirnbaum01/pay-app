@@ -25,7 +25,7 @@ class UserMailers < ActionMailer::Base
     @url = generate_url(User.find_by_email(@payment.email))
     loaner_email = User.find(@payment.user_id).email
 
-    mail(:to => @payment.email, :subject => "Reminder that you owe some money", :from => loaner_email, :return_path => loaner_email
+    mail(:to => @payment.email, :subject => "Reminder that you owe some money", :from => loaner_email, :return_path => loaner_email)
   end
 
   #this will send one email with all payments to each payee, from a particular user
