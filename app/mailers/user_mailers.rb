@@ -5,7 +5,7 @@ class UserMailers < ActionMailer::Base
   	@current_user = current_user
     @payment = payment
 
-    if User.find_by_email(@payment.email).password == nil  #user has not yet signed up
+    if User.find_by_email(@payment.email).encrypted_password == ""  #user has not yet signed up
       @url = payments_url(:auth_token => User.find_by_email(@payment.email).authentication_token)
     else
       @url = payments_url
@@ -18,7 +18,7 @@ class UserMailers < ActionMailer::Base
   def reminder_email(payment)
     @payment = payment
         
-    if User.find_by_email(@payment.email).password == nil
+    if User.find_by_email(@payment.email).encrypted_password == ""
       @url = payments_url(:auth_token => User.find_by_email(@payment.email).authentication_token)
     else
       @url = payments_url
@@ -31,7 +31,7 @@ class UserMailers < ActionMailer::Base
   def reminder_email2(all_payments)
     @all_payments = all_payments
         
-    if User.find_by_email(@all_payments.first.email).password == nil
+    if User.find_by_email(@all_payments.first.email).encrypted_password == ""
       @url = payments_url(:auth_token => User.find_by_email(@all_payments.first.email).authentication_token)
     else
       @url = payments_url

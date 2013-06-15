@@ -20,8 +20,17 @@
   <div><%= f.label :password_confirmation %><br />
   <%= f.password_field :password_confirmation %></div>
 
-  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-  <%= f.password_field :current_password %></div>
+  <%# This is content that I added to try to remove current_password issue for token authentication %>
+  <% if current_user.password == nil %>
+    <div>
+      <%= f.hidden_field :current_password, :value => nil %>
+    </div>
+  <% else %>
+  
+  <%# This code was originally in the form %>
+    <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+    <%= f.password_field :current_password %></div>
+  <% end %>
 
   <div><%= f.submit "Update" %></div>
 <% end %>

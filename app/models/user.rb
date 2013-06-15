@@ -10,4 +10,14 @@ class User < ActiveRecord::Base
   :remember_me, :not_registered, :pay_method, :pay_desc, :email_instructions
   # attr_accessible :title, :body
   has_many :payments
+
+  # bypasses Devise's requirement to re-enter current password to edit ... BUT THIS ALSO REMOVES THE NEED TO PUT IN CURRENT PASSWORD ALWAYS.  SO NEED TO FIX
+  def update_with_password(params={})   
+	if params[:password].blank? 
+		params.delete(:current_password) 
+	  	update_attributes(params) 
+  	else
+  		super
+  	end
+  end
 end
