@@ -4,7 +4,7 @@ task :send_reminder_email => :environment do
 		puts "Sending reminder emails..."
 
 		Payment.all.each do |payment|
-			UserMailer.reminder_email(payment).deliver
+			UserMailers.reminder_email(payment).deliver
 		end
 
 		puts "done."
@@ -18,7 +18,7 @@ task :send_reminder_email2 => :environment do
 		User.all.each do |user|
 			user.payments.group_by { |e| e.email }.each do |all_payments|
 				#all_payments.second.each do |indv_payment|
-				UserMailer.reminder_email2(all_payments.second).deliver
+				UserMailers.reminder_email2(all_payments.second).deliver
 				
 			end
 		end

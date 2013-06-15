@@ -68,7 +68,7 @@ class PaymentsController < ApplicationController
       if @payment.save
         
         # Tell the UserMailer to send a welcome Email after save
-        UserMailer.welcome_email(@payment, current_user).deliver
+        UserMailers.welcome_email(@payment, current_user).deliver
 
         format.html { redirect_to payments_url, :flash => { notice: 'Payment was successfully created.' } }
         format.json { render json: @payment, status: :created, location: @payment }
@@ -102,8 +102,11 @@ class PaymentsController < ApplicationController
       if @payment.update_attributes(params[:payment])
         format.html { redirect_to payments_url, :flash => { :success => "Payment was successfully updated." } }
         format.json { head :no_content }
+        if @payment.update_attributes(params[:payment][:paid]) == "paid"
+          UserMailers.paid_email(@payment).deliver
+        end
       else
-        format.html { render action: "edit" }
+        format.html { render action: "editnr" }
         format.json { render json: @payment.errors, status: :unprocessable_entity }
       end
     end

@@ -1,17 +1,15 @@
-
-    <h1>Hello!</a></h1>
     <p>
-      <b>This is PayMonkey, your friendly neighborhood loan shark :)</b><br/>
+      Hello, <% @payment.email %>!  This is PayMonkey, your friendly neighborhood loan shark :)<br/>
     </p>
     <p>
       You owe some money to <a name="text_email"><%= loaner_email %></a>, who wants to be paid back.  Specifically, you owe
 
       <% if mailer_type == 'single_payment' %>
-        <%= " $" + payment_amount %> for <%= payment_description %>
+        <%= number_to_currency(payment_amount) %> for <%= payment_description %>.
       <% else %>
         :<br/><ul>
           <% @all_payments.each do |indv_payment| %>
-            <li>$<%= indv_payment.amount %> for <%= indv_payment.description %></li>
+            <li><%= number_to_currency(indv_payment.amount) %> for <%= indv_payment.description %></li>
           <% end %>
         </ul>
       <% end %>
