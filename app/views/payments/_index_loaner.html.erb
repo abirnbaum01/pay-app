@@ -1,10 +1,9 @@
-<% if @payments_current.empty? %>
-  <h1>No payments due to you</h1>
-<% else %>
-  <h1>Payments owed to you</h1>
-<% end %>
+<h1>Payments owed to you</h1>
 
-<% unless @payments_current.empty? %>
+<% if @payments_current.empty? %>
+  You don't currently have any payments owed to you.  Add a payment by clicking "New Payment" below
+  <br/><br/>
+<% else %>
   <table class="table table-striped table-bordered table-condensed">
 
       <tr>

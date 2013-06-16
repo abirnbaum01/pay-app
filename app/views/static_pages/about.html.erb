@@ -2,10 +2,15 @@
     <div class="container-narrow">
     	<%= render :partial => 'layouts/header', :locals => { :active => 'About' }  %>
 
-		This site was developed by Adam Birnbaum.  You can contact him at birnbaum DOT adam AT gmail DOT com.
-    	<%= render 'layouts/footer' %>
-    	<!-- <br>
- 
+		<h1>How it works</h1><br/>
+		<b>Adding payments</b><br/>
+		Once you are signed up, simply setup your payment options (e.g. paypal, check in the mail), add a payment, and submit.  PayMonkee will take care of the rest, sending an initial email to let your friend know they owe you money, as well as sending a follow up email once a week until you are paid back.<br/><br/>
+		<b>If you receive a PayMonkee payment request</b><br/>
+		Rest assured that PayMonkee will help remind you of your payment.  Once you have paid back your friend, simply click the link in the email reminder that is sent to you and update your payment status to PAID.  We will notify your friend that you have paid back what you owe, and will stop sending you email reminders.<br/><br/>
+		<h1>Our story</h1><br/>
+		We started this site because we were frustrated with reminding friends to pay us back, and remembering to pay back friends.  We thought that there had to be a better way.  So we created PayMonkee to solve our problem, and hopefully help you out too!<br/><br/>
+		<h1>Questions/Feedback</h1><br>
+		Questions or feedback?  We'd love to hear from you!  Send us an email at <%= mail_to "support@paymonkee.com"%>
 
-According to Chinese legend, Money Frog, or Chan Chu in Chinese, was the wife of one of the the Eight Immortals protecting against misfortune and bringing bigger enrichment in wealth.
-    </div> -->
+    	<%= render 'layouts/footer' %>
+    </div>
