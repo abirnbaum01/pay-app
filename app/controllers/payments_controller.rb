@@ -83,7 +83,7 @@ class PaymentsController < ApplicationController
           # Tell the UserMailer to send a welcome Email after save
           UserMailers.welcome_email(@payment).deliver
 
-          format.html { redirect_to payments_url, :flash => { notice: 'Frist email reminder has been sent.' } }
+          format.html { redirect_to payments_url, :flash => { notice: 'First email payment reminder has been sent.' } }
           format.json { render json: @payment, status: :created, location: @payment }
         else
           format.html { render action: "new" }

@@ -5,7 +5,7 @@
   </head>
   <body>
   
-  <%= render partial: 'layouts/email_body', locals: { pay_method: User.find(@all_payments.first.user_id).pay_method, pay_description: User.find(@all_payments.first.user_id).pay_desc, email_instructions: User.find(@all_payments.first.user_id).email_instructions, payer_email: User.find(@all_payments.first.user_id).email, loaner_email: @all_payments.first.email, payment_description: @all_payments.first.description, payment_amount: @all_payments.first.amount, mailer_type: 'consolidate_payments' } %>
+  <%= render partial: 'layouts/email_body', locals: { pay_method: User.find(@all_payments.first.user_id).pay_method, pay_description: User.find(@all_payments.first.user_id).pay_desc, email_instructions: User.find(@all_payments.first.user_id).email_instructions, payer_email: @all_payments.first.email, loaner_email: User.find(@all_payments.first.user_id).email, payment_description: @all_payments.first.description, payment_amount: @all_payments.first.amount, mailer_type: 'consolidate_payments' } %>
   <br/>
   <%= render 'layouts/email_footer' %>
   
