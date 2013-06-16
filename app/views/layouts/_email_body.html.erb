@@ -16,15 +16,15 @@
 
     </p>
     <p>
-      <% if pay_method == "paypal" %>
+      <% if defined?(pay_method) && pay_method == "paypal" %>
         Please send your payment via paypal to the address <%= pay_description %>.  
       <% end %>
 
-      <% if pay_method == "mail_check" %>
+      <% if defined?(pay_method) && pay_method == "mail_check" %>
         Please send your payment by mailing a check to the address <%= pay_description %>.  
       <% end %>
 
-        We'll send you <%= payment_frequency %> reminders so you don't forget.  Once you have paid back <%= loaner_email %>, follow 
+        We'll send you weekly reminders so you don't forget.  Once you have paid back <%= loaner_email %>, follow 
         
         <% if defined?(url_override) && url_override == true %>
           this link 
@@ -34,7 +34,9 @@
         
         to confirm and stop receiving these reminders.<br/>
     </p>
-    <p>Your friend asked that we pass along some additional comments:  <%= email_instructions %></p>
+    <% if email_instructions != nil && email_instructions != "" %>
+      <p>Your friend asked that we pass along some additional comments:  <%= email_instructions %></p>
+    <% end %>
     <p>Thanks and have a great day!</p>
 
     <!--a name="text_email"></a-->
