@@ -1,7 +1,7 @@
 <% if @payments_current.empty? %>
   <h1>No payments due to you</h1>
 <% else %>
-  <h1>Payments due to you</h1>
+  <h1>Payments owed to you</h1>
 <% end %>
 
 <% unless @payments_current.empty? %>
@@ -38,5 +38,5 @@
 
 <%= link_to 'New Payment', new_payment_path, class: "btn btn-primary" %>
 
-<%= link_to 'Customize Email', edit_user_mailer_path(current_user), class: "btn btn-primary" %><br />
+<%= link_to 'Change Payment Options', edit_user_mailer_path(current_user), class: "btn btn-primary" %><br />
 

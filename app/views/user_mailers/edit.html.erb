@@ -4,17 +4,19 @@
 
 <h1>Editing email options</h1>
 
-
-
 <%= render 'form' %>
 
 <%= link_to 'Back', payments_path %>
 <br/><hr/>
-The email that will automatically be sent to people who owe you money is as follows:
-<br/><br/><br/>
-<i>
-<%= render partial: 'layouts/email_body', locals: { payer_email: "{ THEIR EMAIL ADDRESS }", loaner_email: "{ YOUR EMAIL ADDRESS }", payment_description: "{ PAYMENT DESCRIPTION }", payment_amount: "{ PAYMENT AMOUNT }", payment_frequency: "{ PAYMENT FREQUENCY }", mailer_type: 'single_payment' } %>
-</i>
+
+<% if defined?(is_not_defined_will_not_display) %>
+	<h1>Preview email</h1>
+	The email that will automatically be sent to people who owe you money is as follows:
+	<br/><br/><br/>
+	<i>
+	<%= render partial: 'layouts/email_body', locals: { pay_method: "paypal", pay_description: " { YOUR PAYMENT ADDRESS }", email_instructions: "{ YOUR ADDITIONAL COMMENTS }", payer_email: "{ THEIR EMAIL ADDRESS }", loaner_email: "{ YOUR EMAIL ADDRESS }", payment_description: "{ PAYMENT DESCRIPTION }", payment_amount: "{ PAYMENT AMOUNT }", payment_frequency: "{ PAYMENT FREQUENCY }", mailer_type: 'single_payment', url_override: true } %>
+	</i>
+<% end %>
 
 <%#= link_to 'Show', @payment %> <!-- | -->
 

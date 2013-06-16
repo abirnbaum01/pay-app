@@ -14,7 +14,7 @@
       <div class="control-group">
         <%= f.label :pay_method, "How you should be paid back", class: "control-label" %><br />
         <div class="controls">
-          <%=f.select :pay_method, [ [ 'Paypal', 'paypal' ], [ 'Mail a check', 'mail_check' ] ], {:include_blank => 'Please select'} %>
+          <%=f.select :pay_method, [ [ 'Paypal', 'paypal' ], [ 'Mail a check', 'mail_check' ] ], {:prompt => true } %>
         </div>
       </div>
     </div>

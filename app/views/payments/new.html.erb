@@ -1,12 +1,21 @@
-<% provide(:title, 'About') %>
-    <div class="container-narrow">
-        <%= render :partial => 'layouts/header', :locals => { :active => 'Payments' }  %>
+<% provide(:title, 'New') %>
 
-        <h1>New payment</h1>
+<div class="container-narrow">
+    <%= render :partial => 'layouts/header', :locals => { :active => 'Payments' }  %>
 
-<%= render 'form_loaner' %>
+	<% if @preview == true %>
+    	<h1>Preview email</h1>
+    	<div id = "email_preview">
+		  <%= render partial: 'layouts/email_body', locals: { pay_method: @payment.user.pay_method, pay_description: @payment.user.pay_desc, email_instructions: @payment.user.email_instructions, payer_email: @payment.email, loaner_email: @payment.user.email, payment_description: @payment.description, payment_amount: @payment.amount, payment_frequency: @payment.frequency, mailer_type: 'single_payment', url_override: true } %>
+		  <hr>
+    	</div>
+    <% end %>
 
-<%= link_to 'Back', payments_path %>
+    <h1>New payment</h1>
 
-<%= render 'layouts/footer' %>
-    </div>
+	<%= render 'form_loaner' %>
+
+	<%= link_to 'Back', payments_path %>
+
+	<%= render 'layouts/footer' %>
+</div>

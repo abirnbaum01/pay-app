@@ -16,8 +16,25 @@
 
     </p>
     <p>
-      We'll send you <%= payment_frequency %> reminders so you don't forget.  Once you have paid back <%= loaner_email %>, follow <%= link_to 'this link', @url %> to confirm and stop receiving these reminders.<br/>
+      <% if pay_method == "paypal" %>
+        Please send your payment via paypal to the address <%= pay_description %>.  
+      <% end %>
+
+      <% if pay_method == "mail_check" %>
+        Please send your payment by mailing a check to the address <%= pay_description %>.  
+      <% end %>
+
+        We'll send you <%= payment_frequency %> reminders so you don't forget.  Once you have paid back <%= loaner_email %>, follow 
+        
+        <% if defined?(url_override) && url_override == true %>
+          this link 
+        <% else %>
+          <%= link_to 'this link', @url %>
+        <% end %>
+        
+        to confirm and stop receiving these reminders.<br/>
     </p>
+    <p><%= email_instructions %></p>
     <p>Thanks and have a great day!</p>
 
     <!--a name="text_email"></a-->

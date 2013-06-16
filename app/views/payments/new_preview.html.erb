@@ -1,0 +1,17 @@
+<% provide(:title, 'Preview') %>
+<div class="container-narrow">
+	<%= render :partial => 'layouts/header', :locals => { :active => 'Payments' }  %>
+	
+	<h1>Preview email to send</h1>
+
+	<%= render 'form_loaner' %>
+
+	<%= link_to 'Send Email', new_payment_path, class: "btn btn-primary" %>
+
+	<!-- figure out how to add in back link -->
+	<%#= link_to 'Back', payments_path %>
+
+	<%= render 'layouts/footer' %>
+</div>
+
+http://stackoverflow.com/questions/2892017/best-way-to-create-preview-functionality-in-rails
