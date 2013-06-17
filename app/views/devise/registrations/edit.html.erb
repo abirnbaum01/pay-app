@@ -1,12 +1,12 @@
 <% provide(:title, 'Edit') %>
-    <div class="container-narrow">
-      <%= render :partial => 'layouts/header', :locals => { :active => '' }  %>
-      
-      <% if current_user.not_registered != 1 %>
-        <h2>Edit <%= resource_name.to_s.humanize %></h2>
-      <% else %>
-        <h2>Sign up</h2>
-      <% end %>
+  <div class="container-narrow">
+    <%= render :partial => 'layouts/header', :locals => { :active => '' }  %>
+    
+    <% if current_user.not_registered != 1 %>
+      <h2>Edit <%= resource_name.to_s.humanize %></h2>
+    <% else %>
+      <h2>Sign up</h2>
+    <% end %>
 
 
   <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
@@ -19,25 +19,28 @@
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
-  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-  <%= f.password_field :password, :autocomplete => "off" %></div>
+  <div><%= f.label :password %> 
+    <% if current_user.not_registered != 1 %>
+      <i>(leave blank if you don't want to change it)</i>
+    <% end %>
+    <br />
+    <%= f.password_field :password, :autocomplete => "off" %>
+  </div>
 
   <div><%= f.label :password_confirmation %><br />
   <%= f.password_field :password_confirmation %></div>
 
-  <%# This is content that I added to try to remove current_password issue for token authentication %>
-  <% if current_user.password == nil %>
-    <div>
-      <%= f.hidden_field :current_password, :value => nil %>
-    </div>
-  <% else %>
-  
-  <%# This code was originally in the form %>
+  <% if current_user.not_registered != 1 %>
     <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
     <%= f.password_field :current_password %></div>
   <% end %>
 
-  <div><%= f.submit "Update" %></div>
+
+  <% if current_user.not_registered != 1 %>
+    <div><%= f.submit "Update" %></div>
+  <% else %>
+    <div><%= f.submit "Sign up" %></div>
+  <% end %>
 <% end %>
 
 <% if current_user.not_registered != 1 %>

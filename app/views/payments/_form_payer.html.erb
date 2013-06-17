@@ -12,7 +12,7 @@
   <% end %>
 
 <p>
-  <b>Email:</b>
+  <b>Owe Money To:</b>
   <%= @payment.email %>
 </p>
 
@@ -22,7 +22,7 @@
 </p>
 
 <p>
-  <b>Amount:</b>
+  <b>Amount Owed:</b>
   <%= number_to_currency(@payment.amount) %>
 </p>
 
@@ -43,7 +43,7 @@
     <div class="control-group">
       <div class="actions">
         <div class="controls">  
-          <%= f.submit %>
+          <%= f.submit :confirm => "Are you sure you want to change status?  If you change status to paid, we will remove the payment from your queue and you will no longer get emailed reminders." %>
         </div>
       </div>
     </div>
