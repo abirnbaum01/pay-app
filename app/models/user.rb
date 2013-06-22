@@ -10,8 +10,8 @@ class User < ActiveRecord::Base
 
   has_many :payments
 
-  validates :password, :length => { :minimum => 4 }
-  validates :password_confirmation, :length => { :minimum => 4 }
+  #validates :password, :length => { :minimum => 4 }
+  #validates :password_confirmation, :length => { :minimum => 4 }
 
   #override this devise function to skip current_password validation if user is not registered
   def update_with_password(params={})
