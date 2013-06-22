@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+
+# mailcatcher not in gemfile per install instructions:  https://github.com/sj26/mailcatcher
+
 gem 'rails', '3.2.13'
 gem 'bootstrap-sass', '2.1'
 gem 'bcrypt-ruby', '3.0.1'

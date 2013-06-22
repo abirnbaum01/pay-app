@@ -15,30 +15,50 @@ class User < ActiveRecord::Base
 
   #override this devise function to skip current_password validation if user is not registered
   def update_with_password(params={})
-
+    puts "*********** params before delete is #{params[:current_password]}"
     current_password = params.delete(:current_password)
 
+    puts "*********** params after delete is #{params[:current_password]}"
+    puts "*********** current password is #{current_password}"
+
     if params[:password].blank?
+      puts "*********** params password was blank"
       params.delete(:password)
       params.delete(:password_confirmation) if params[:password_confirmation].blank?
     end
+    puts "self is as follows:"
+    puts self.encrypted_password
+    puts "current password is as follows:"
+    puts current_password
+    puts "params is as follows"
+    puts params
+
+    if has_no_password?
+      puts "************ has no password"
+    end
+    if valid_password?(current_password)
+      puts "************ current password valid"
+    end
 
     result = if has_no_password?  || valid_password?(current_password)
-      if has_no_password?
-        params[:not_registered] = "0"
-      end
+      puts "***********  result was true"
       update_attributes(params)
     else
+      puts "*********** result was false"
       self.assign_attributes(params)
       self.valid?
       self.errors.add(:current_password, current_password.blank? ? :blank : :invalid)
-
-      #self.errors.add(:current_password, current_password.blank? ? :blank : :invalid)
-      #self.attributes = params
       false
     end
-
+    
+    #if !has_no_password? && params[:not_registered] == "1"     #don't want to do this here, because have not yet verified password was set
+      #params[:not_registered] = "0"
+     # params.update_attribute(:not_registered, "0")
+      #puts "not_registered updated **********"
+    #end
     clean_up_passwords
+    
+    puts "*********** got to end of loop"
     result
   end
 
