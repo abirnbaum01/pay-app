@@ -5,16 +5,20 @@
 
 	<% if @preview == true %>
     	<h1>Preview email</h1>
-    	<p><b>Your PayMonkee reminder is not complete.  The following email will be sent initially and weekly to your friend.  Please confirm by clicking create below.</b></p>
+    	<p><b>Your PayMonkee reminder is <u>not complete</u> until you confirm submission below.  The following email will be sent initially and weekly to your friend.  Please confirm by clicking create below.</b></p>
     	<div id = "email_preview">
 		  <%= render partial: 'layouts/email_body', locals: { pay_method: @payment.user.pay_method, pay_description: @payment.user.pay_desc, email_instructions: @payment.user.email_instructions, payer_email: @payment.email, loaner_email: @payment.user.email, payment_description: @payment.description, payment_amount: @payment.amount, payment_frequency: @payment.frequency, mailer_type: 'single_payment', url_override: true } %>
-		<hr>
+
     	</div>
     <% end %>
 
-    <h1>New payment</h1>
+    <% if @preview != true %>
+        <hr>
+        <h1>New payment</h1>
+    <% end %>
 
-	<%= render 'form_loaner' %>
+    <%= render 'form_loaner' %>
+
 
 	<%= link_to 'Back', payments_path %>
 
