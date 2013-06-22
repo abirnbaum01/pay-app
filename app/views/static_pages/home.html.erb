@@ -3,13 +3,13 @@
     	<%= render :partial => 'layouts/header', :locals => { :active => 'Home' }  %>
     	<div class="jumbotron">
     		<h2>
-    			Get friends who owe you money to pay you back
+    			Get your friends who owe you money to pay you back
     		</h2>
     		<p class="lead">
-    			Track money that friends owe you so you don't forget.  We will automatically send your friend email reminders so you don't have to nag.  Get paid back and buy yourself that Chipotle burrito.
+    			Track money that friends owe you so you don't forget.  We'll automatically send email reminders so you don't have to nag.  Get paid back and buy yourself that Chipotle burrito.
     		</p>
 
-            Tracking a whopping <%= number_to_currency(@payment_total) %> owed for <%= @user_count %> folks like yourself... and growing!!!
+            Tracking a whopping <b><%= number_to_currency(@payment_total) %></b> owed for <b><%= @user_count %></b> folks like yourself... and growing!!!
     	
             <br>
             <br>
@@ -47,31 +47,15 @@
     				Just enter in how you would like to be paid back and any other special instructions, and we'll include in our email reminders.
     			</p>
     		</div>
-            <!--
-    		<div class="span6">
-    			<h4>
-    				Subheading
-    			</h4>
-    			<p>
-    				Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis
-    				interdum.
-    			</p>
-    			<h4>
-    				Subheading
-    			</h4>
-    			<p>
-    				Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis
-    				consectetur purus sit amet fermentum.
-    			</p>
-    			<h4>
-    				Subheading
-    			</h4>
-    			<p>
-    				Maecenas sed diam eget risus varius blandit sit amet non magna.
-    			</p>
-    		</div>-->
     	</div>
-    	
+
+        <center>
+            <%= image_tag "monkeymoney.png", :size => '300x300' %>
+
+    	    <% if !user_signed_in? %>
+                <%= link_to 'Sign up now!', new_user_registration_path, class: "btn btn-large btn-success" %>
+            <% end %>
+        </center>
         
         <%= render 'layouts/footer' %>
     </div>

@@ -26,12 +26,13 @@
 			</li>
 
 			<li <% if active == 'Sign up' %> class="active" <% end %> >
-				<%= link_to "Join Now", new_user_registration_path %>
+				<%= link_to "Sign up now!", new_user_registration_path %>
 			</li>
 
 		<% end %>
 		<% if user_signed_in? %>
-			<i>Logged in as <%= current_user.email %></i>
+			
+			<p align="right">Logged in as <%= current_user.email %></p>
 		<% end %>	
 	</ul>
 	<h3 class="muted">
