@@ -1,0 +1,9 @@
+Hello, <%= User.find(@payment.user_id).email %>!  This is PayMonkee, your friendly neighborhood loan shark :)
+
+We wanted to let you know that <%= @payment.email %> has paid you back <%= number_to_currency(@payment.amount) %> for <%= @payment.description %>.
+
+So, you can cancel the collection agency and tell Frido you won't be needing his somewhat painful "reminder services."
+
+Until next time, this is PayMonkee signing out!
+
+<%= render 'layouts/email_footer' %>

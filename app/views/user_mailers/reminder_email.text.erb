@@ -1,11 +1,3 @@
-Hello, <%= @payment.email %>!
-This is PayMonkee, your friendly neighborhood loan shark :)
-===============================================================
-We're sending you a friendly reminder that you owe some money to <%= @payment.user.email %>, who wants to be paid back.
-Payment description: <%= @payment.description %>
-Payment amount: $<%= @payment.amount %>
+<%= render partial: 'layouts/email_body', locals: { pay_method: @payment.user.pay_method, pay_description: @payment.user.pay_desc, email_instructions: @payment.user.email_instructions, payer_email: @payment.email, loaner_email: @payment.user.email, payment_description: @payment.description, payment_amount: @payment.amount, mailer_type: 'single_payment' } %>
 
-We'll send you <%= @payment.frequency %> reminders so you don't forget.  Once you have paid back <%= @payment.user.email %>, follow this link to confirm and stop receiving these reminders:
-<%= @url %>
-
-Thanks and have a great day!
+<%= render 'layouts/email_footer' %>
