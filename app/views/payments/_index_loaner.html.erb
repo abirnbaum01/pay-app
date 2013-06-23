@@ -21,7 +21,7 @@
   <% @payments_current.sort { |a, b| a.email <=> b.email }.each do |payment| %>
     <tr>
       <td><%= payment.email %></td>
-      <td><%= word_wrap(payment.description.capitalize), :line_width => 8) %></td>
+      <td><%= word_wrap(payment.description.capitalize, :line_width => 8) %></td>
       <td><%= number_to_currency(payment.amount) %></td>
       <td><%= payment.frequency.capitalize %></td>
       <td><%= payment.paid.capitalize %></td>

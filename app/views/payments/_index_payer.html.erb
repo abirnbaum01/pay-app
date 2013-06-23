@@ -24,7 +24,7 @@
       <% if (payment.email == current_user.email) && (payment.paid != 'paid') %>
         <!--td><%#= payment.email %></td-->
         <td><%= payment.user.email %></td>
-        <td><%= word_wrap(payment.description), :line_width => 8) %></td>
+        <td><%= word_wrap(payment.description, :line_width => 8) %></td>
         <td><%= number_to_currency(payment.amount) %></td>
         <td><%= payment.paid.capitalize %></td>
         <!--<td><%#= link_to 'Show', payment %></td>-->
