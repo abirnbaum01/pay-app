@@ -1,26 +1,34 @@
 <% provide(:title, 'Home') %>
-    <div class="container-narrow">
+    <div class="container">
     	<%= render :partial => 'layouts/header', :locals => { :active => 'Home' }  %>
     	<div class="jumbotron">
-    		<h2>
-    			Get your friends who owe you money to pay you back
-    		</h2>
-    		<p class="lead">
-    			Track money that friends owe you so you don't forget.  We'll automatically send email reminders so you don't have to nag.  Get paid back and buy yourself that Chipotle burrito.
-    		</p>
+    		<div class="row-fluid">
+                <div class="span8">
+                    <h2>
+            			Get your friends who owe you money to pay you back
+            		</h2>
+            		<p class="lead">
+            			Track money that friends owe you so you don't forget.  We'll automatically send email reminders so you don't have to nag.  Get paid back and buy yourself that Chipotle burrito.
+            		</p>
 
-            Tracking a whopping <b><%= number_to_currency(@payment_total) %></b> owed for <b><%= @user_count %></b> folks like yourself... and growing!!!
-    	
-            <br>
-            <br>
-            <% if user_signed_in? %>
-            <%= link_to 'Go to Payments', payments_path, class: "btn btn-large btn-success" %>
-            <% else %>
-            <%= link_to 'Sign up now!', new_user_registration_path, class: "btn btn-large btn-success" %>
-            <% end %>
+                    Tracking a whopping <b><%= number_to_currency(@payment_total) %></b> owed for <b><%= @user_count %></b> folks like yourself... and growing!!!
+            	
+                    <br>
+                    <br>
+                    <% if user_signed_in? %>
+                    <%= link_to 'Go to Payments', payments_path, class: "btn btn-large btn-success" %>
+                    <% else %>
+                    <%= link_to 'Sign up now!', new_user_registration_path, class: "btn btn-large btn-success" %>
+                    <% end %>
+                </div>
+                <div class="span4">
+                    <%= image_tag "monkeymoney.png", :size => '300x300' %>
+                </div>
+            </div>
     	</div>
     	
         <hr>
+        
     	<div class="row-fluid marketing">
     		<div class="span4">
     			<h4>
@@ -44,18 +52,11 @@
     				Customize our email reminders
     			</h4>
     			<p>
-    				Just enter in how you would like to be paid back and any other special instructions, and we'll include in our email reminders.
+    				Just enter in how you would like to be paid back and any other special instructions, and we'll include those details in our email reminders.
     			</p>
     		</div>
     	</div>
 
-        <center>
-            <%= image_tag "monkeymoney.png", :size => '300x300' %>
-
-    	    <% if !user_signed_in? %>
-                <%= link_to 'Sign up now!', new_user_registration_path, class: "btn btn-large btn-success" %>
-            <% end %>
-        </center>
         
         <%= render 'layouts/footer' %>
     </div>
