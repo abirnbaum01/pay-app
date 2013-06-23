@@ -21,13 +21,13 @@
   <% @payments_current.sort { |a, b| a.email <=> b.email }.each do |payment| %>
     <tr>
       <td><%= payment.email %></td>
-      <td><%= word_wrap(payment.description.capitalize, :line_width => 8) %></td>
+      <td><%= word_wrap(payment.description.capitalize), :line_width => 8) %></td>
       <td><%= number_to_currency(payment.amount) %></td>
       <td><%= payment.frequency.capitalize %></td>
       <td><%= payment.paid.capitalize %></td>
       <td><%= payment.created_at.strftime("%b %d %Y") %></td>
       <!--<td><%#= link_to 'Show', payment %></td>-->
-      <td><%= link_to 'Edit', edit_payment_path(payment) %></td>
+      <td><% if payment.paid != "paid" %><%= link_to 'Edit', edit_payment_path(payment) %><% end %></td>
       <td><%= link_to 'Delete', payment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
