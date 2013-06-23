@@ -3,9 +3,9 @@
     <%= render :partial => 'layouts/header', :locals => { :active => '' }  %>
     
     <% if current_user.not_registered != 1 %>
-      <h2>Edit <%= resource_name.to_s.humanize %></h2>
+      <h3>Edit Account</h3>
     <% else %>
-      <h2>Sign up</h2>
+      <h3>Sign up</h3>
     <% end %>
     
     <%# this will display params if uncommented %>
@@ -51,7 +51,7 @@
 <% if current_user.not_registered != 1 %>
   <h3>Cancel my account</h3>
 
-  <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %></p>
+  <p>Unhappy?  Please <%= mail_to "support@paymonkee.com", "email us" %> if there is anything we can do to help improve your experience with PayMonkee.  If you would like to cancel your account, you can do so below: <%= button_to "Cancel Account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %></p>
 <% end %>
 
 <%= link_to "Back", :back %>
