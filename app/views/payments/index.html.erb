@@ -11,15 +11,18 @@
 	<%= render 'payments/index_loaner' %>
 	<br/>
 	<hr>
+	<%= render 'payments/index_payer' %>
 <% else %>
-	<h1>Payments owed to you</h1>
-	<p>You cannot track payments owed to you, because you are not a registered user.  To track payments that your friends owe you and automatically send them reminders, sign up below.</p>
-	<%= link_to 'Sign Up Now', edit_user_registration_path, class: "btn btn-primary" %>
+	<%= render 'payments/index_payer' %>
 	<br/>
 	<hr>
+	<h1>Payments owed to you</h1>
+	<p>You cannot track payments owed to you, because you are not a registered user.  But fear not, you can become one for free in a few seconds.  To track payments that your friends owe you and automatically send them reminders, sign up below.</p>
+	<%= link_to 'Sign Up Now', edit_user_registration_path, class: "btn btn-primary" %>
+
 <% end %>
 
-<%= render 'payments/index_payer' %>
+
 
 <%= render 'layouts/footer' %>
     </div>

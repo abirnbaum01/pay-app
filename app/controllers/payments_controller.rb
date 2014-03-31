@@ -38,6 +38,7 @@ class PaymentsController < ApplicationController
   # GET /payments/new.json
   def new
     if current_user.pay_method == nil  # If user has not yet entered in a payment method (b/c new to the site)
+      # @skip_to_new_payment = true
       redirect_to edit_user_mailer_url(current_user), :flash => { notice: 'Before creating a new payment, please let us know how you would like to be paid back' }
       return
     end
